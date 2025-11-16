@@ -1,1 +1,504 @@
-currency-board-files / index.html
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>شركة التبر الصافي العالمية — أسعار العملات</title>
+
+<!-- خط عربي أنيق للعناوين -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0b1221;
+  --accent:#d9b44a;
+  --card:#131c33;
+  --muted:#9aa4b3;
+  --pos:#1fa65a;
+  --neg:#e65252;
+}
+
+/* ***** تنسيق عام للواجهة ***** */
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  background:var(--bg);
+  color:#fff;
+  font-family:'Tajawal',sans-serif;
+}
+
+.app{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  padding:22px;
+  box-sizing:border-box;
+  gap:18px;
+  align-items:center;
+}
+
+/* ***** شريط أعلى الصفحة ***** */
+.topbar{
+  width:100%;
+  max-width:1920px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.left-block{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.logo-box{
+  width:260px;
+  height:110px;
+  background:rgba(255,255,255,0.02);
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.logo-box img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+/* ***** عناوين الشركة ***** */
+.title-main{
+  font-size:38px;
+  font-weight:900;
+  color:var(--accent);
+}
+
+.title-sub{
+  font-size:18px;
+  opacity:0.85;
+}
+
+.city{
+  font-size:15px;
+  color:var(--muted);
+  margin-top:4px;
+}
+
+/* ***** عناصر التحكم ***** */
+.controls{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.btn, .input, .select{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.btn{
+  cursor:pointer;
+  font-weight:700;
+}
+
+/* ***** شبكة العملات 7 عناصر على صف واحد ***** */
+.stage{
+  flex:1;
+  width:100%;
+  max-width:1920px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:14px;
+}
+
+/* ***** بطاقة العملة ***** */
+.card{
+  background:var(--card);
+  padding:18px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:160px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.45);
+  border:1px solid rgba(255,255,255,0.03);
+}
+
+.flag-box{
+  width:72px;
+  height:72px;
+  font-size:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ***** بيانات العملة ***** */
+.code-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.currency-code{
+  font-size:22px;
+  font-weight:900;
+}
+
+.symbol{
+  color:var(--muted);
+  font-size:18px;
+}
+
+.currency-name{
+  font-size:14px;
+  color:var(--muted);
+}
+
+.rate{
+  margin-top:4px;
+  font-size:35px;
+  font-weight:900;
+}
+
+.delta{
+  margin-top:6px;
+  font-size:14px;
+  color:var(--muted);
+}
+
+.up{ color:var(--pos); }
+.down{ color:var(--neg); }
+
+/* ***** الساعة والتاريخ (أسفل اليسار) ***** */
+.bottom-info{
+  position:fixed;
+  bottom:16px;
+  left:16px;
+  text-align:left;
+}
+
+.time{
+  font-size:22px;
+  font-weight:800;
+  color:var(--accent);
+}
+
+.date{
+  font-size:15px;
+  color:var(--muted);
+}
+
+/* ***** ثيمات **** */
+.theme0 { --bg:#0b1221; --accent:#d9b44a; --card:#131c33; --muted:#9aa4b3; }
+.theme1 { --bg:#0a1628; --accent:#74a5e3; --card:#122035; --muted:#9fbad0; }
+.theme2 { --bg:#000000; --accent:#f1d07a; --card:#0f0f0f; --muted:#9d9d9d; }
+.theme3 { --bg:#061a17; --accent:#6fd1b4; --card:#08221d; --muted:#9ac7bb; }
+.theme4 { --bg:#f5f7fb; --accent:#0b63a6; --card:#ffffff; --muted:#5c6d7c; color:#000!important; }
+.theme4 .card{ color:#000!important; }
+
+</style>
+</head>
+
+<body class="theme0">
+
+<div class="app">
+
+  <!-- شريط علوي -->
+  <div class="topbar">
+
+    <div class="left-block">
+      <div class="logo-box">
+        <img src="data:image/png;base64,
+iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAOxAAADsQBlSsOGwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAECSURB
+VHja7cExAQAAAMKg9U9tCF8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAPAgmQABHgABFAAAAABJRU5ErkJggg==" />
+      </div>
+
+      <div>
+        <div class="title-main">شركة التبر الصافي العالمية</div>
+        <div class="title-sub">للصرافة والتحويلات المالية</div>
+        <div class="city">أجدابيا — ليبيا</div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <select id="themeSel" class="select">
+        <option value="0">ثيم داكن — ذهبي</option>
+        <option value="1">ثيم أزرق هادئ</option>
+        <option value="2">أسود — ذهبي</option>
+        <option value="3">أخضر رسمي</option>
+        <option value="4">ثيم فاتح حديث</option>
+      </select>
+
+      <button class="btn" id="refresh">تحديث</button>
+      <button class="btn" id="fullscreen">ملء الشاشة</button>
+
+      <input id="proxyInput" class="input" placeholder="Proxy اختياري">
+      <input id="ghInput" class="input" placeholder="GitHub Proxy">
+      <button id="saveProxy" class="btn">حفظ</button>
+    </div>
+
+  </div>
+
+  <!-- منطقة العرض -->
+  <div class="stage">
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div id="syncInfo" style="color:var(--muted);font-size:15px; margin-top:8px">
+    آخر تحديث: —
+  </div>
+
+</div>
+
+<!-- التاريخ والوقت -->
+<div class="bottom-info">
+  <div class="time" id="time">--:--:--</div>
+  <div class="date" id="date">----</div>
+</div>
+
+<script>
+/* -------------------------------------------------------
+   قائمة العملات
+------------------------------------------------------- */
+const CURRENCIES = [
+  {c:"USD", n:"الدولار الأمريكي", f:"🇺🇸"},
+  {c:"EUR", n:"اليورو", f:"🇪🇺"},
+  {c:"GBP", n:"الجنيه الإسترليني", f:"🇬🇧"},
+  {c:"TRY", n:"الليرة التركية", f:"🇹🇷"},
+  {c:"AED", n:"الدرهم الإماراتي", f:"🇦🇪"},
+  {c:"TND", n:"الدينار التونسي", f:"🇹🇳"},
+  {c:"EGP", n:"الجنيه المصري", f:"🇪🇬"}
+];
+
+const SYMBOL = {
+  USD:"$", EUR:"€", GBP:"£", TRY:"₺",
+  AED:"د.إ", TND:"د.ت", EGP:"ج.م"
+};
+
+const mapNameToCode = {
+  "الدولار الأمريكي":"USD",
+  "اليورو":"EUR",
+  "الجنيه الاسترليني":"GBP",
+  "الليرة التركية":"TRY",
+  "الدرهم الإماراتي":"AED",
+  "الدينار التونسي":"TND",
+  "الجنيه المصري":"EGP"
+};
+
+/* -------------------------------------------------------
+   بناء بطاقات العملات
+------------------------------------------------------- */
+const grid = document.getElementById("grid");
+
+function buildGrid(){
+  grid.innerHTML = "";
+  CURRENCIES.forEach(cur=>{
+    const div = document.createElement("div");
+    div.className="card";
+    div.id="card-"+cur.c;
+    div.innerHTML = `
+      <div class="flag-box">${cur.f}</div>
+      <div class="content">
+        <div class="code-row">
+          <div class="currency-code">${cur.c}</div>
+          <div class="symbol">${SYMBOL[cur.c]}</div>
+        </div>
+        <div class="currency-name">${cur.n}</div>
+        <div class="rate" id="rate-${cur.c}">--</div>
+        <div class="delta" id="delta-${cur.c}">—</div>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+buildGrid();
+
+/* -------------------------------------------------------
+   التاريخ والوقت
+------------------------------------------------------- */
+function updateClock(){
+  const d=new Date();
+  document.getElementById("time").textContent =
+    d.toLocaleTimeString("ar-LY");
+  document.getElementById("date").textContent =
+    d.toLocaleDateString("ar-LY",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+}
+setInterval(updateClock,1000); updateClock();
+
+/* -------------------------------------------------------
+   الثيمات
+------------------------------------------------------- */
+const themeSel = document.getElementById("themeSel");
+
+function applyTheme(i){
+  document.body.className = "theme"+i;
+  localStorage.setItem("theme",i);
+}
+applyTheme(localStorage.getItem("theme")||0);
+
+themeSel.onchange = ()=> applyTheme(themeSel.value);
+
+/* -------------------------------------------------------
+   بروكسي + GitHub Proxy
+------------------------------------------------------- */
+const proxyInput = document.getElementById("proxyInput");
+const ghInput = document.getElementById("ghInput");
+try{
+  proxyInput.value = localStorage.getItem("proxy") || "";
+  ghInput.value    = localStorage.getItem("ghproxy") || "";
+}catch(e){}
+
+document.getElementById("saveProxy").onclick = ()=>{
+  localStorage.setItem("proxy", proxyInput.value.trim());
+  localStorage.setItem("ghproxy", ghInput.value.trim());
+  alert("تم الحفظ");
+};
+
+/* -------------------------------------------------------
+   الجلب من مصرف ليبيا + بروكسي + GitHub Proxy
+------------------------------------------------------- */
+const CBL_AR = "https://cbl.gov.ly/currency-exchange-rates/";
+const CBL_EN = "https://cbl.gov.ly/en/currency-exchange-rates/";
+const FALLBACK = [
+  "https://api.allorigins.win/raw?url=",
+  "https://thingproxy.freeboard.io/fetch/"
+];
+
+async function fetchText(u){
+  const r = await fetch(u,{mode:"cors"});
+  if(!r.ok) throw new Error("HTTP "+r.status);
+  return await r.text();
+}
+
+function parseCBL(html){
+  const doc = new DOMParser().parseFromString(html,"text/html");
+  const rows = doc.querySelectorAll("table tbody tr");
+  const out = {};
+  rows.forEach(tr=>{
+    const tds=[...tr.querySelectorAll("td")].map(td=>td.textContent.trim());
+    const hasNum=s=>/[0-9]/.test(s);
+    const name = tds.find(s=>!hasNum(s) && s.length>0);
+    const nums = tds.filter(hasNum).map(v=>Number(v.replace(/[^0-9.]/g,"")));
+    if(!name || nums.length<1) return;
+    const code = mapNameToCode[name];
+    if(!code) return;
+    const avg=nums[0], sell=nums[1]||avg, buy=nums[2]||avg;
+    out[code]={avg,sell,buy};
+  });
+  return {
+    parsed:out,
+    asOf:new Date().toISOString()
+  };
+}
+
+function setValues(parsed,asOf,src){
+  CURRENCIES.forEach(cur=>{
+    const v = parsed[cur.c]? parsed[cur.c].avg : "--";
+    document.getElementById("rate-"+cur.c).textContent =
+      typeof v==="number" ? v.toFixed(3)+" LYD" : "--";
+
+    document.getElementById("delta-"+cur.c).textContent = " ";
+  });
+
+  document.getElementById("syncInfo").textContent =
+    "آخر تحديث: " + new Date(asOf).toLocaleString("ar-LY") +
+    (src? " — مصدر: "+src:"");
+}
+
+async function refreshNow(){
+  try{
+    let html;
+
+    // 1 Direct AR
+    try{
+      html = await fetchText(CBL_AR);
+      return handle(html,"Direct-AR");
+    }catch(e){}
+
+    // 2 Direct EN
+    try{
+      html = await fetchText(CBL_EN);
+      return handle(html,"Direct-EN");
+    }catch(e){}
+
+    // 3 User Proxy
+    if(proxyInput.value.trim()){
+      const p = proxyInput.value.trim();
+      try{
+        html = await fetchText(p + encodeURIComponent(CBL_AR));
+        return handle(html,"User-Proxy");
+      }catch(e){}
+    }
+
+    // 4 GitHub Proxy
+    if(ghInput.value.trim()){
+      const gp = ghInput.value.trim();
+      try{
+        html = await fetchText(gp + encodeURIComponent(CBL_AR));
+        return handle(html,"GitHub-Proxy");
+      }catch(e){}
+    }
+
+    // 5 Public fallback
+    for(const fb of FALLBACK){
+      try{
+        html = await fetchText(fb + encodeURIComponent(CBL_AR));
+        return handle(html,"Fallback");
+      }catch(e){}
+    }
+
+    document.getElementById("syncInfo").textContent =
+      "تعذّر الوصول للمصدر — عرض آخر القيم المحلية";
+
+  }catch(e){
+    document.getElementById("syncInfo").textContent =
+      "خطأ — عرض آخر القيم المحلية";
+  }
+}
+
+function handle(html,src){
+  const {parsed,asOf} = parseCBL(html);
+  setValues(parsed,asOf,src);
+}
+
+document.getElementById("refresh").onclick = refreshNow;
+
+/* تحديث تلقائي كل دقيقة */
+setInterval(refreshNow,60000);
+
+/* تشغيل أولي */
+setTimeout(refreshNow,800);
+
+/* ملء الشاشة */
+document.getElementById("fullscreen").onclick = ()=>{
+  if(document.documentElement.requestFullscreen)
+    document.documentElement.requestFullscreen();
+};
+
+</script>
+</body>
+</html>
