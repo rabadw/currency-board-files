@@ -3,502 +3,225 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>شركة التبر الصافي العالمية — أسعار العملات</title>
-
-<!-- خط عربي أنيق للعناوين -->
+<title>شركة التبر الصافي العالمية — لوحة أسعار العملات</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --bg:#0b1221;
-  --accent:#d9b44a;
-  --card:#131c33;
-  --muted:#9aa4b3;
-  --pos:#1fa65a;
-  --neg:#e65252;
-}
-
-/* ***** تنسيق عام للواجهة ***** */
-html,body{
-  margin:0;
-  padding:0;
-  height:100%;
-  background:var(--bg);
-  color:#fff;
-  font-family:'Tajawal',sans-serif;
-}
-
-.app{
-  width:100%;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  padding:22px;
-  box-sizing:border-box;
-  gap:18px;
-  align-items:center;
-}
-
-/* ***** شريط أعلى الصفحة ***** */
-.topbar{
-  width:100%;
-  max-width:1920px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-}
-
-.left-block{
-  display:flex;
-  align-items:center;
-  gap:18px;
-}
-
-.logo-box{
-  width:260px;
-  height:110px;
-  background:rgba(255,255,255,0.02);
-  border-radius:10px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,0.05);
-}
-
-.logo-box img{
-  max-width:100%;
-  max-height:100%;
-  object-fit:contain;
-}
-
-/* ***** عناوين الشركة ***** */
-.title-main{
-  font-size:38px;
-  font-weight:900;
-  color:var(--accent);
-}
-
-.title-sub{
-  font-size:18px;
-  opacity:0.85;
-}
-
-.city{
-  font-size:15px;
-  color:var(--muted);
-  margin-top:4px;
-}
-
-/* ***** عناصر التحكم ***** */
-.controls{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.btn, .input, .select{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  color:#fff;
-  padding:8px 12px;
-  border-radius:8px;
-  font-size:14px;
-}
-
-.btn{
-  cursor:pointer;
-  font-weight:700;
-}
-
-/* ***** شبكة العملات 7 عناصر على صف واحد ***** */
-.stage{
-  flex:1;
-  width:100%;
-  max-width:1920px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.grid{
-  width:100%;
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:14px;
-}
-
-/* ***** بطاقة العملة ***** */
-.card{
-  background:var(--card);
-  padding:18px;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  gap:14px;
-  min-height:160px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.45);
-  border:1px solid rgba(255,255,255,0.03);
-}
-
-.flag-box{
-  width:72px;
-  height:72px;
-  font-size:42px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* ***** بيانات العملة ***** */
-.code-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.currency-code{
-  font-size:22px;
-  font-weight:900;
-}
-
-.symbol{
-  color:var(--muted);
-  font-size:18px;
-}
-
-.currency-name{
-  font-size:14px;
-  color:var(--muted);
-}
-
-.rate{
-  margin-top:4px;
-  font-size:35px;
-  font-weight:900;
-}
-
-.delta{
-  margin-top:6px;
-  font-size:14px;
-  color:var(--muted);
-}
-
-.up{ color:var(--pos); }
-.down{ color:var(--neg); }
-
-/* ***** الساعة والتاريخ (أسفل اليسار) ***** */
-.bottom-info{
-  position:fixed;
-  bottom:16px;
-  left:16px;
-  text-align:left;
-}
-
-.time{
-  font-size:22px;
-  font-weight:800;
-  color:var(--accent);
-}
-
-.date{
-  font-size:15px;
-  color:var(--muted);
-}
-
-/* ***** ثيمات **** */
-.theme0 { --bg:#0b1221; --accent:#d9b44a; --card:#131c33; --muted:#9aa4b3; }
-.theme1 { --bg:#0a1628; --accent:#74a5e3; --card:#122035; --muted:#9fbad0; }
-.theme2 { --bg:#000000; --accent:#f1d07a; --card:#0f0f0f; --muted:#9d9d9d; }
-.theme3 { --bg:#061a17; --accent:#6fd1b4; --card:#08221d; --muted:#9ac7bb; }
-.theme4 { --bg:#f5f7fb; --accent:#0b63a6; --card:#ffffff; --muted:#5c6d7c; color:#000!important; }
-.theme4 .card{ color:#000!important; }
-
+:root{--bg:#0b1221;--accent:#d9b44a;--card:#131c33;--muted:#9aa4b3;--pos:#1fa65a;--neg:#e65252}
+html,body{height:100%;margin:0;background:var(--bg);color:#fff;font-family:'Tajawal',sans-serif}
+.app{width:100%;height:100vh;display:flex;flex-direction:column;padding:22px;box-sizing:border-box;gap:18px;align-items:center}
+.topbar{width:100%;max-width:1920px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.left-block{display:flex;align-items:center;gap:18px}
+.logo-box{width:260px;height:110px;background:rgba(255,255,255,0.02);border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid rgba(255,255,255,0.05)}
+.logo-box img{max-width:100%;max-height:100%;object-fit:contain}
+.title-main{font-size:36px;font-weight:900;color:var(--accent);margin:0}
+.title-sub{font-size:15px;color:var(--muted);margin-top:6px}
+.city{font-size:13px;color:var(--muted)}
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn,.input,.select{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#fff;padding:8px 12px;border-radius:8px;font-size:14px}
+.btn{cursor:pointer;font-weight:700}
+.stage{flex:1;width:100%;max-width:1920px;display:flex;align-items:center;justify-content:center}
+.grid{width:100%;display:grid;grid-template-columns:repeat(7,1fr);gap:14px}
+.card{background:var(--card);padding:18px;border-radius:14px;display:flex;align-items:center;gap:14px;min-height:140px;box-shadow:0 8px 25px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.03)}
+.flag-box{width:72px;height:72px;font-size:42px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.content{flex:1;display:flex;flex-direction:column}
+.code-row{display:flex;justify-content:space-between;align-items:center}
+.currency-code{font-size:22px;font-weight:900}
+.symbol{color:var(--muted);font-size:18px}
+.currency-name{font-size:14px;color:var(--muted)}
+.rate{margin-top:6px;font-size:34px;font-weight:900}
+.delta{margin-top:6px;font-size:13px;color:var(--muted)}
+.bottom-info{position:fixed;left:16px;bottom:16px;text-align:left}
+.time{font-size:20px;font-weight:800;color:var(--accent)}
+.date{font-size:13px;color:var(--muted)}
+.theme0{--bg:#0b1221;--accent:#d9b44a;--card:#131c33;--muted:#9aa4b3}
+.theme1{--bg:#071b2a;--accent:#74a5e3;--card:#071827;--muted:#9fbad0}
+.theme2{--bg:#000000;--accent:#f1d07a;--card:#0f0f0f;--muted:#9d9d9d}
+.theme3{--bg:#061a17;--accent:#6fd1b4;--card:#08221d;--muted:#9ac7bb}
+.theme4{--bg:#f5f7fb;--accent:#0b63a6;--card:#ffffff;--muted:#5c6d7c;color:#000}
+.theme4 .card{color:#000}
+#log{display:none!important}
+@media(max-width:1400px){.grid{grid-template-columns:repeat(4,1fr)}.rate{font-size:28px}}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.flag-box{width:56px;height:56px;font-size:28px}}
 </style>
 </head>
-
 <body class="theme0">
-
-<div class="app">
-
-  <!-- شريط علوي -->
+<div class="app" id="app">
   <div class="topbar">
-
     <div class="left-block">
       <div class="logo-box">
-        <img src="data:image/png;base64,
-iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
-AAAOxAAADsQBlSsOGwAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAECSURB
-VHja7cExAQAAAMKg9U9tCF8gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAPAgmQABHgABFAAAAABJRU5ErkJggg==" />
+        <img id="logoImg" src="data:image/png;base64,REPLACE_WITH_BASE64" alt="لوغو شركة التبر الصافي">
       </div>
-
       <div>
         <div class="title-main">شركة التبر الصافي العالمية</div>
         <div class="title-sub">للصرافة والتحويلات المالية</div>
         <div class="city">أجدابيا — ليبيا</div>
       </div>
     </div>
-
-    <div class="controls">
-      <select id="themeSel" class="select">
-        <option value="0">ثيم داكن — ذهبي</option>
-        <option value="1">ثيم أزرق هادئ</option>
+    <div class="controls" role="toolbar" aria-label="عناصر تحكم">
+      <select id="themeSel" class="select" title="اختر الثيم">
+        <option value="0">داكن — ذهبي</option>
+        <option value="1">أزرق هادئ</option>
         <option value="2">أسود — ذهبي</option>
         <option value="3">أخضر رسمي</option>
-        <option value="4">ثيم فاتح حديث</option>
+        <option value="4">فاتح حديث</option>
       </select>
-
-      <button class="btn" id="refresh">تحديث</button>
-      <button class="btn" id="fullscreen">ملء الشاشة</button>
-
-      <input id="proxyInput" class="input" placeholder="Proxy اختياري">
-      <input id="ghInput" class="input" placeholder="GitHub Proxy">
+      <button id="refreshBtn" class="btn">تحديث</button>
+      <button id="fullBtn" class="btn">ملء الشاشة</button>
+      <input id="proxyInput" class="input" placeholder="بادئة Proxy اختياري (مثال: https://api.allorigins.win/raw?url=)">
+      <input id="ghInput" class="input" placeholder="بادئة GitHub Proxy (مثال: https://USERNAME.github.io/REPO/proxy.js?u=)">
       <button id="saveProxy" class="btn">حفظ</button>
     </div>
-
   </div>
 
-  <!-- منطقة العرض -->
   <div class="stage">
-    <div class="grid" id="grid"></div>
+    <div class="grid" id="grid" role="region" aria-label="أسعار العملات"></div>
   </div>
 
-  <div id="syncInfo" style="color:var(--muted);font-size:15px; margin-top:8px">
-    آخر تحديث: —
-  </div>
-
+  <div id="syncInfo" style="color:var(--muted);font-size:15px;margin-top:6px">آخر مزامنة: —</div>
 </div>
 
-<!-- التاريخ والوقت -->
-<div class="bottom-info">
+<div id="log" aria-hidden="true"></div>
+
+<div class="bottom-info" aria-hidden="false">
   <div class="time" id="time">--:--:--</div>
-  <div class="date" id="date">----</div>
+  <div class="date" id="date">—</div>
 </div>
 
 <script>
-/* -------------------------------------------------------
-   قائمة العملات
-------------------------------------------------------- */
 const CURRENCIES = [
-  {c:"USD", n:"الدولار الأمريكي", f:"🇺🇸"},
-  {c:"EUR", n:"اليورو", f:"🇪🇺"},
-  {c:"GBP", n:"الجنيه الإسترليني", f:"🇬🇧"},
-  {c:"TRY", n:"الليرة التركية", f:"🇹🇷"},
-  {c:"AED", n:"الدرهم الإماراتي", f:"🇦🇪"},
-  {c:"TND", n:"الدينار التونسي", f:"🇹🇳"},
-  {c:"EGP", n:"الجنيه المصري", f:"🇪🇬"}
+  {code:'USD', name:'الدولار الأمريكي', flag:'🇺🇸'},
+  {code:'EUR', name:'اليورو', flag:'🇪🇺'},
+  {code:'TRY', name:'الليرة التركية', flag:'🇹🇷'},
+  {code:'GBP', name:'الجنيه الإسترليني', flag:'🇬🇧'},
+  {code:'AED', name:'الدرهم الإماراتي', flag:'🇦🇪'},
+  {code:'TND', name:'الدينار التونسي', flag:'🇹🇳'},
+  {code:'EGP', name:'الجنيه المصري', flag:'🇪🇬'}
 ];
+const SYMBOLS = {USD:'$',EUR:'€',TRY:'₺',GBP:'£',AED:'د.إ',TND:'د.ت',EGP:'ج.م'};
+const NAME_TO_CODE = {'الدولار الأمريكي':'USD','اليورو':'EUR','الجنيه الاسترليني':'GBP','الليرة التركية':'TRY','الدرهم الإماراتي':'AED','الدينار التونسي':'TND','الجنيه المصري':'EGP'};
+const CBL_AR = 'https://cbl.gov.ly/currency-exchange-rates/';
+const CBL_EN = 'https://cbl.gov.ly/en/currency-exchange-rates/';
+const FALLBACKS = ['https://api.allorigins.win/raw?url=','https://thingproxy.freeboard.io/fetch/'];
 
-const SYMBOL = {
-  USD:"$", EUR:"€", GBP:"£", TRY:"₺",
-  AED:"د.إ", TND:"د.ت", EGP:"ج.م"
-};
+const grid = document.getElementById('grid');
+const syncInfo = document.getElementById('syncInfo');
+const proxyInput = document.getElementById('proxyInput');
+const ghInput = document.getElementById('ghInput');
+const saveProxyBtn = document.getElementById('saveProxy');
+const refreshBtn = document.getElementById('refreshBtn');
+const fullBtn = document.getElementById('fullBtn');
+const themeSel = document.getElementById('themeSel');
+const timeEl = document.getElementById('time');
+const dateEl = document.getElementById('date');
 
-const mapNameToCode = {
-  "الدولار الأمريكي":"USD",
-  "اليورو":"EUR",
-  "الجنيه الاسترليني":"GBP",
-  "الليرة التركية":"TRY",
-  "الدرهم الإماراتي":"AED",
-  "الدينار التونسي":"TND",
-  "الجنيه المصري":"EGP"
-};
+try{ proxyInput.value = localStorage.getItem('lyd-proxy')||''; ghInput.value = localStorage.getItem('lyd-gh-proxy')||''; }catch(e){}
+try{ themeSel.value = localStorage.getItem('lyd-theme') || '0'; }catch(e){}
 
-/* -------------------------------------------------------
-   بناء بطاقات العملات
-------------------------------------------------------- */
-const grid = document.getElementById("grid");
-
-function buildGrid(){
-  grid.innerHTML = "";
-  CURRENCIES.forEach(cur=>{
-    const div = document.createElement("div");
-    div.className="card";
-    div.id="card-"+cur.c;
-    div.innerHTML = `
-      <div class="flag-box">${cur.f}</div>
+function buildGrid(){ grid.innerHTML=''; CURRENCIES.forEach(c=>{ const card = document.createElement('div'); card.className='card'; card.id='card-'+c.code; card.innerHTML = `
+      <div class="flag-box">${c.flag}</div>
       <div class="content">
-        <div class="code-row">
-          <div class="currency-code">${cur.c}</div>
-          <div class="symbol">${SYMBOL[cur.c]}</div>
-        </div>
-        <div class="currency-name">${cur.n}</div>
-        <div class="rate" id="rate-${cur.c}">--</div>
-        <div class="delta" id="delta-${cur.c}">—</div>
+        <div class="code-row"><div class="currency-code">${c.code}</div><div class="symbol">${SYMBOLS[c.code]}</div></div>
+        <div class="currency-name">${c.name}</div>
+        <div class="rate" id="rate-${c.code}">--</div>
+        <div class="delta" id="delta-${c.code}">—</div>
       </div>
-    `;
-    grid.appendChild(div);
-  });
-}
-
+    `; grid.appendChild(card); }); }
 buildGrid();
 
-/* -------------------------------------------------------
-   التاريخ والوقت
-------------------------------------------------------- */
-function updateClock(){
-  const d=new Date();
-  document.getElementById("time").textContent =
-    d.toLocaleTimeString("ar-LY");
-  document.getElementById("date").textContent =
-    d.toLocaleDateString("ar-LY",{weekday:"long",year:"numeric",month:"long",day:"numeric"});
-}
-setInterval(updateClock,1000); updateClock();
+function tick(){ const d=new Date(); timeEl.textContent = d.toLocaleTimeString('ar-LY'); dateEl.textContent = d.toLocaleDateString('ar-LY',{weekday:'long',year:'numeric',month:'long',day:'numeric'}); }
+tick(); setInterval(tick,1000);
 
-/* -------------------------------------------------------
-   الثيمات
-------------------------------------------------------- */
-const themeSel = document.getElementById("themeSel");
-
-function applyTheme(i){
-  document.body.className = "theme"+i;
-  localStorage.setItem("theme",i);
-}
-applyTheme(localStorage.getItem("theme")||0);
-
-themeSel.onchange = ()=> applyTheme(themeSel.value);
-
-/* -------------------------------------------------------
-   بروكسي + GitHub Proxy
-------------------------------------------------------- */
-const proxyInput = document.getElementById("proxyInput");
-const ghInput = document.getElementById("ghInput");
-try{
-  proxyInput.value = localStorage.getItem("proxy") || "";
-  ghInput.value    = localStorage.getItem("ghproxy") || "";
-}catch(e){}
-
-document.getElementById("saveProxy").onclick = ()=>{
-  localStorage.setItem("proxy", proxyInput.value.trim());
-  localStorage.setItem("ghproxy", ghInput.value.trim());
-  alert("تم الحفظ");
-};
-
-/* -------------------------------------------------------
-   الجلب من مصرف ليبيا + بروكسي + GitHub Proxy
-------------------------------------------------------- */
-const CBL_AR = "https://cbl.gov.ly/currency-exchange-rates/";
-const CBL_EN = "https://cbl.gov.ly/en/currency-exchange-rates/";
-const FALLBACK = [
-  "https://api.allorigins.win/raw?url=",
-  "https://thingproxy.freeboard.io/fetch/"
+const THEMES = [
+  { '--bg':'#0b1221','--accent':'#d9b44a','--card':'#131c33','--muted':'#9aa4b3' },
+  { '--bg':'#071b2a','--accent':'#74a5e3','--card':'#071827','--muted':'#9fbad0' },
+  { '--bg':'#000000','--accent':'#f1d07a','--card':'#0f0f0f','--muted':'#9d9d9d' },
+  { '--bg':'#061a17','--accent':'#6fd1b4','--card':'#08221d','--muted':'#9ac7bb' },
+  { '--bg':'#f5f7fb','--accent':'#0b63a6','--card':'#ffffff','--muted':'#5c6d7c' }
 ];
+function applyTheme(i){ const t = THEMES[i]||THEMES[0]; Object.keys(t).forEach(k=>document.documentElement.style.setProperty(k,t[k])); if(String(i)==='4') document.body.style.color='#000'; localStorage.setItem('lyd-theme',String(i)); }
+applyTheme(localStorage.getItem('lyd-theme')||0);
+themeSel.addEventListener('change',()=>applyTheme(themeSel.value));
 
-async function fetchText(u){
-  const r = await fetch(u,{mode:"cors"});
-  if(!r.ok) throw new Error("HTTP "+r.status);
-  return await r.text();
-}
+function fmt(n){ return Number(n).toLocaleString('ar-LY',{minimumFractionDigits:3,maximumFractionDigits:3}); }
+async function fetchText(url){ const r = await fetch(url,{mode:'cors'}); if(!r.ok) throw new Error('HTTP '+r.status); return await r.text(); }
 
 function parseCBL(html){
-  const doc = new DOMParser().parseFromString(html,"text/html");
-  const rows = doc.querySelectorAll("table tbody tr");
-  const out = {};
+  const doc = new DOMParser().parseFromString(html,'text/html');
+  const rows = Array.from(doc.querySelectorAll('table tbody tr'));
+  const result = {};
   rows.forEach(tr=>{
-    const tds=[...tr.querySelectorAll("td")].map(td=>td.textContent.trim());
-    const hasNum=s=>/[0-9]/.test(s);
-    const name = tds.find(s=>!hasNum(s) && s.length>0);
-    const nums = tds.filter(hasNum).map(v=>Number(v.replace(/[^0-9.]/g,"")));
+    const tds = Array.from(tr.querySelectorAll('td')).map(td=>td.textContent.trim());
+    const hasNum = s=>/[0-9]/.test(s);
+    const name = tds.find(s=>!hasNum(s) && s.length>0 && s.length<40);
+    const nums = tds.filter(hasNum).map(v=>Number((v||'').replace(/[^0-9.]/g,'')));
     if(!name || nums.length<1) return;
-    const code = mapNameToCode[name];
+    const code = NAME_TO_CODE[name];
     if(!code) return;
-    const avg=nums[0], sell=nums[1]||avg, buy=nums[2]||avg;
-    out[code]={avg,sell,buy};
+    result[code] = { avg: nums[0], sell: nums[1]||nums[0], buy: nums[2]||nums[0] };
   });
-  return {
-    parsed:out,
-    asOf:new Date().toISOString()
-  };
+  return { parsed: result, asOf: new Date().toISOString() };
 }
 
-function setValues(parsed,asOf,src){
-  CURRENCIES.forEach(cur=>{
-    const v = parsed[cur.c]? parsed[cur.c].avg : "--";
-    document.getElementById("rate-"+cur.c).textContent =
-      typeof v==="number" ? v.toFixed(3)+" LYD" : "--";
+let prev = {};
+try{ prev = JSON.parse(localStorage.getItem('lyd-prev') || '{}'); }catch(e){ prev = {}; }
 
-    document.getElementById("delta-"+cur.c).textContent = " ";
+function applyParsed(parsed, asOf, source){
+  CURRENCIES.forEach(c=>{
+    const rateEl = document.getElementById('rate-'+c.code);
+    const deltaEl = document.getElementById('delta-'+c.code);
+    const val = parsed && parsed[c.code] ? parsed[c.code].avg : (prev[c.code] || null);
+    if(val === null){ if(rateEl) rateEl.textContent = '--'; }
+    else { if(rateEl) rateEl.textContent = fmt(val) + ' LYD'; }
+    if(deltaEl){
+      const prevVal = prev[c.code];
+      if(prevVal === undefined || prevVal === null) deltaEl.textContent = '—';
+      else {
+        const diff = (val || 0) - prevVal;
+        if(diff>0) deltaEl.innerHTML = `<span style="color:var(--pos)">▲ ${diff.toFixed(3)}</span>`;
+        else if(diff<0) deltaEl.innerHTML = `<span style="color:var(--neg)">▼ ${Math.abs(diff).toFixed(3)}</span>`;
+        else deltaEl.textContent = '—';
+      }
+    }
+    if(val !== null) prev[c.code] = val;
   });
-
-  document.getElementById("syncInfo").textContent =
-    "آخر تحديث: " + new Date(asOf).toLocaleString("ar-LY") +
-    (src? " — مصدر: "+src:"");
+  try{ localStorage.setItem('lyd-prev', JSON.stringify(prev)); }catch(e){}
+  if(asOf) syncInfo.textContent = 'آخر مزامنة: ' + new Date(asOf).toLocaleString('ar-LY') + (source? ' · مصدر: '+source : '');
 }
 
-async function refreshNow(){
+async function refreshRates(){
+  syncInfo.textContent = 'جارٍ التحديث...';
   try{
-    let html;
-
-    // 1 Direct AR
-    try{
-      html = await fetchText(CBL_AR);
-      return handle(html,"Direct-AR");
-    }catch(e){}
-
-    // 2 Direct EN
-    try{
-      html = await fetchText(CBL_EN);
-      return handle(html,"Direct-EN");
-    }catch(e){}
-
-    // 3 User Proxy
-    if(proxyInput.value.trim()){
-      const p = proxyInput.value.trim();
-      try{
-        html = await fetchText(p + encodeURIComponent(CBL_AR));
-        return handle(html,"User-Proxy");
-      }catch(e){}
-    }
-
-    // 4 GitHub Proxy
-    if(ghInput.value.trim()){
-      const gp = ghInput.value.trim();
-      try{
-        html = await fetchText(gp + encodeURIComponent(CBL_AR));
-        return handle(html,"GitHub-Proxy");
-      }catch(e){}
-    }
-
-    // 5 Public fallback
-    for(const fb of FALLBACK){
-      try{
-        html = await fetchText(fb + encodeURIComponent(CBL_AR));
-        return handle(html,"Fallback");
-      }catch(e){}
-    }
-
-    document.getElementById("syncInfo").textContent =
-      "تعذّر الوصول للمصدر — عرض آخر القيم المحلية";
-
-  }catch(e){
-    document.getElementById("syncInfo").textContent =
-      "خطأ — عرض آخر القيم المحلية";
+    const txt = await fetchText(CBL_AR);
+    const parsed = parseCBL(txt);
+    applyParsed(parsed.parsed, parsed.asOf, 'CBL-AR'); return;
+  }catch(e){}
+  try{
+    const txt = await fetchText(CBL_EN);
+    const parsed = parseCBL(txt);
+    applyParsed(parsed.parsed, parsed.asOf, 'CBL-EN'); return;
+  }catch(e){}
+  const pfx = (proxyInput.value||localStorage.getItem('lyd-proxy')||'').trim();
+  if(pfx){
+    const patterns = [pfx + encodeURIComponent(CBL_AR), pfx + '?u=' + encodeURIComponent(CBL_AR)];
+    for(const u of patterns){ try{ const t = await fetchText(u); const parsed = parseCBL(t); applyParsed(parsed.parsed, parsed.asOf, 'User-Proxy'); return; }catch(e){} }
   }
+  const gh = (ghInput.value||localStorage.getItem('lyd-gh-proxy')||'').trim();
+  if(gh){
+    const patterns = [gh + encodeURIComponent(CBL_AR), gh + '?u=' + encodeURIComponent(CBL_AR)];
+    for(const u of patterns){ try{ const t = await fetchText(u); const parsed = parseCBL(t); applyParsed(parsed.parsed, parsed.asOf, 'GH-Proxy'); return; }catch(e){} }
+  }
+  for(const fb of FALLBACKS){ try{ const t = await fetchText(fb + encodeURIComponent(CBL_AR)); const parsed = parseCBL(t); applyParsed(parsed.parsed, parsed.asOf, 'Fallback'); return; }catch(e){} }
+  syncInfo.textContent = 'تعذّر الوصول للمصدر — عرض آخر القيم المحلية';
+  applyParsed(null,new Date().toISOString(),null);
 }
 
-function handle(html,src){
-  const {parsed,asOf} = parseCBL(html);
-  setValues(parsed,asOf,src);
-}
+refreshBtn.addEventListener('click', refreshRates);
+saveProxyBtn.addEventListener('click', ()=>{ localStorage.setItem('lyd-proxy', proxyInput.value.trim()); localStorage.setItem('lyd-gh-proxy', ghInput.value.trim()); alert('تم الحفظ'); });
+fullBtn.addEventListener('click', ()=>{ try{ if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen(); else document.documentElement.webkitRequestFullscreen(); }catch(e){} });
 
-document.getElementById("refresh").onclick = refreshNow;
-
-/* تحديث تلقائي كل دقيقة */
-setInterval(refreshNow,60000);
-
-/* تشغيل أولي */
-setTimeout(refreshNow,800);
-
-/* ملء الشاشة */
-document.getElementById("fullscreen").onclick = ()=>{
-  if(document.documentElement.requestFullscreen)
-    document.documentElement.requestFullscreen();
-};
-
+try{ const savedTheme = Number(localStorage.getItem('lyd-theme')||0); themeSel.value = savedTheme; applyTheme(savedTheme); }catch(e){}
+setTimeout(refreshRates,900);
+setInterval(refreshRates,60*1000);
 </script>
 </body>
 </html>
